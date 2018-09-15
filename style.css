@@ -96,6 +96,58 @@ body {
     box-shadow: 7px 7px grey;
 }
 
+#congrats {
+    margin-left: 50px;
+    display: none;
+    background-color: white;
+    font-size: 1em;
+    width: 350px;
+    height: 120px;
+    z-index: 10;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -175px;
+    margin-top: -130px;
+    padding: 15px;
+    /* box-shadow: 7px 7px darkgrey; */
+    transition: display 2s;
+}
+
+#congrats-title {
+    text-transform: uppercase;
+    color: blue;
+    text-shadow: 1px 1px red;
+    text-align: center;
+    padding-bottom: 5px;
+}
+
+#congrats-winner {
+    text-align: center;
+}
+
+#input-winner {
+    padding: 10px;
+    /* text-transform: uppercase; */
+}
+#restart {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    margin-left: -65px;
+    margin-top: 8px;
+    color: orange;
+    text-shadow: 1px 1px red;
+    background-color: lightgrey;
+    font-size: 1.2em;
+    padding: 5px;
+    display: inline-block;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    outline: none;
+}
+
 #close-manual {
     color: red;
     float: right;
@@ -147,6 +199,7 @@ body {
     width: 40px;
     height: 40px;
     font-size: 10px;
+
     /* box-shadow: -2px -2px lightgrey; */
 }
 
@@ -160,4 +213,10 @@ body {
 
 .player2 {
     background-color: red;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
 }

@@ -1,5 +1,6 @@
 var slotToBeClicked = $('.column').find('.row0').find('.hole');
 var currentPlayer = 'player1';
+var winner = 'winner';
 // var holes = $('.hole');
 
 function switchPlayers() {
@@ -60,12 +61,18 @@ slotToBeClicked
                 if(elem.eq(i).hasClass(currentPlayer)) {
                     console.log(counter);
                     counter++;
+                    $("." + currentPlayer).addClass('winner');
                 } else {
                     counter =0;
+                    $("." + currentPlayer).removeClass('winner');
                 }
                 if(counter ==4) {
-                    alert('You re the winner!!!');
-                    console.log(currentPlayer);
+                    console.log('You re the winner!!!');
+
+                    victoryBlink(currentPlayer);
+                    setTimeout(victoryFlip, 1000);
+                    setTimeout(victoryBoard,3000);
+
                 }
 
             }
@@ -73,6 +80,37 @@ slotToBeClicked
 
     // end of click event
     });
+
+function victoryBlink(winner) {
+    console.log('The winner is:' + winner);
+    console.log(winner);
+    $('.winner').css('transition-duration', '2s');
+    $('.winner').css('animation', 'blinker 1s linear infinite');
+    $('.winner').css('width', '45px');
+    $('.winner').css('height', '45px');
+}
+
+function victoryFlip () {
+    $('#board').css('transform', 'rotateY(360deg)');
+    // $('#board').css('transform', 'rotateX(1800deg)');
+    $('#board').css('transition', 'transform 2s linear');
+}
+
+function victoryBoard() {
+    $('#overlay').css('display', 'block');
+    $('#congrats').css('display', 'block');
+    $('#congrats').css('transition-duration', '1s');
+    if (currentPlayer == 'player1') {
+        $('#input-winner').html('Player 2');
+        $('#input-winner').css('color', 'red');
+        $('#input-winner').css('text-shadow','1px 1px blue'); 
+    } else {
+        $('#input-winner').html('Player 1');
+        $('#input-winner').css('color', 'blue');
+        $('#input-winner').css('text-shadow','1px 1px red');
+    }
+
+}
 
 $('#instructions').on('click', function () {
     $('#overlay').css('display', 'block');

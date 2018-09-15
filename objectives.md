@@ -23,4 +23,12 @@
 
    - if no more moves, show also a pop up!
    - effect wypuklych zetonow?
-   - body doesnt work;
+   - body background doesnt work;
+   - keyframes animation?? from the to to bottom
+
+   - 4 some action when you win.
+
+   first all the class winner goes big;
+   2nd the board goes around
+
+  pop up who is the winner
