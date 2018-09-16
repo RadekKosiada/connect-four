@@ -49,17 +49,41 @@ slotToBeClicked
 
         checkForVictory(slotsInCol);
         checkForVictory(slotsInRow);
+
+        var player1 = $('.player1');
+        // var player2=$('.player2');
+        checkDiagonal(player1);
+        // checkDiagonal(player2);
+
         switchPlayers();
+
+        function checkDiagonal(player) {
+            var diagonalCounter =0;
+            console.log("checkDiagonal fired");
+            for(var k=0; k<player.length; k++) {
+                for(var i=0; i<diagVict.length; i++) {
+                    for(var j=0; j<diagVict.length; j++) {
+                        if(player.eq(k).hasClass(diagVict[i][j])) {
+                            diagonalCounter++;
+                            console.log(diagonalCounter);
+                        } else {
+                            diagonalCounter =0;
+                        }
+                    }
+                    if(diagonalCounter==4) {
+                        console.log("Yuppi!");
+                    }
+                }
+            }
+        }
 
         function checkForVictory(elem) {
             var counter =0;
-            console.log('check for victory fired');
-            console.log(elem);
-
+            // console.log('check for victory fired');
             for (var i =0; i<=elem.length; i++) {
 
                 if(elem.eq(i).hasClass(currentPlayer)) {
-                    console.log(counter);
+                    // console.log(counter);
                     counter++;
                     $("." + currentPlayer).addClass('winner');
                 } else {
@@ -72,12 +96,9 @@ slotToBeClicked
                     victoryBlink(currentPlayer);
                     setTimeout(victoryFlip, 1000);
                     setTimeout(victoryBoard,3000);
-
                 }
-
             }
         }
-
     // end of click event
     });
 
@@ -103,14 +124,19 @@ function victoryBoard() {
     if (currentPlayer == 'player1') {
         $('#input-winner').html('Player 2');
         $('#input-winner').css('color', 'red');
-        $('#input-winner').css('text-shadow','1px 1px blue'); 
+        $('#input-winner').css('text-shadow','1px 1px blue');
     } else {
         $('#input-winner').html('Player 1');
         $('#input-winner').css('color', 'blue');
         $('#input-winner').css('text-shadow','1px 1px red');
     }
-
 }
+
+
+$('#restart').on('click', function () {
+    location.reload();
+});
+
 
 $('#instructions').on('click', function () {
     $('#overlay').css('display', 'block');
@@ -121,3 +147,41 @@ $('#close-manual').on('click', function () {
     $('#overlay').css('display', 'none');
     $('.manual').css('display', 'none');
 });
+
+
+var diagVict = [
+    [0,7,14,21],
+    [1,8,15,22],
+    [2,9,16,23],
+    [3,8,13,18],
+    [4,9,14,19],
+    [5,10,15,20],
+    [6,13,20,27],
+    [7,14,21,28],
+    [8,15,22,29],
+    [9,14,19,24],
+    [10,15,20,25],
+    [11,16,21,26],
+    [12,19,26,33],
+    [13,20,27,34],
+    [14,21,28,35],
+    [15,20,25,30],
+    [16,21,26,31],
+    [17,22,27,32],
+    [18,25,32,39],
+    [19,26,33,40],
+    [20,27,34,41],
+    [21,26,31,36],
+    [22,27,32,37],
+    [23,28,33,38]
+];
+
+var hole = $('.hole');
+
+
+(function addClass() {
+
+    for (var i=0; i<hole.length; i++) {
+        hole.eq(i).addClass(''+i);
+    }
+})();

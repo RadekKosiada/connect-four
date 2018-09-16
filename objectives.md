@@ -32,3 +32,7 @@
    2nd the board goes around
 
   pop up who is the winner
+
+  why this winner class doesnt work?
+  setTimeout for play again button doesnt work
+  zablokowac gre, jesli jedna osoba wygra!!!
