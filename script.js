@@ -163,6 +163,6 @@ $('#close-manual').on('click', function () {
 
     for (var i=0; i<hole.length; i++) {
         hole.eq(i).addClass(''+i);
-        hole.eq(i).html('<p>'+i+'</p>');
+    
     }
 })();
