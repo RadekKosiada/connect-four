@@ -10,23 +10,29 @@
         <div id="title">
             <h1 id="number">4</h1>
             <h1>Connect</h1>
+            <p id="version">Version 1.1 for Desktop</p>
         </div>
-        <div id="header">
-            <h3 id="pl1">Player 1</h3>
-            <h3 id="pl2">Player 2</h3>
-            <h3 id="instructions">Instructions</h3>
+        <div id="info-bar">
+            <div>
+                <h3 id="pl1">Player 1</h3>
+                <h3 id="pl2">Player 2</h3>
+            </div>
+            <div>
+                <h3 id="instructions">Instructions</h3>
+                <h3 id="reset">Reset</h3>
+            </div>
         </div>
         <div class="manual">
             <p id="close-manual">&#10006;</p>
             <div id="text-manual">
-                <p>Welcome to Connect 4!</p><br>
+                <p>Welcome to <span id="title-manual">Connect 4</span>!</p><br>
                 <p>Be the first player to get four of your colored checkers in a row either horizontally, vertically or diagonally.<br><br></p>
-                <p>Click on the highest row of the chosen column to fill the lowest free slot in the column.</p>
+                <p>Click on the highest row of the chosen column to fill the lowest available slot.</p>
             </div>
         </div>
 
         <div id="congrats">
-            <h1 id="congrats-title">Congrats!</h1>
+            <h1 id="congrats-title">Congratulations!</h1>
             <h3 id="congrats-winner">The winner is <br><span id="input-winner"></span></h3>
             <button id="restart">Play again</button>
         </div>
@@ -186,9 +192,6 @@
 
         <!-- end of board game -->
         </div>
-
-
-
 
         <script
   src="https://code.jquery.com/jquery-3.3.1.js"

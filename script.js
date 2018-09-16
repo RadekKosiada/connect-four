@@ -57,26 +57,6 @@ slotToBeClicked
 
         switchPlayers();
 
-        function checkDiagonal(player) {
-            var diagonalCounter =0;
-            console.log("checkDiagonal fired");
-            for(var k=0; k<player.length; k++) {
-                for(var i=0; i<diagVict.length; i++) {
-                    for(var j=0; j<diagVict.length; j++) {
-                        if(player.eq(k).hasClass(diagVict[i][j])) {
-                            diagonalCounter++;
-                            console.log(diagonalCounter);
-                        } else {
-                            diagonalCounter =0;
-                        }
-                    }
-                    if(diagonalCounter==4) {
-                        console.log("Yuppi!");
-                    }
-                }
-            }
-        }
-
         function checkForVictory(elem) {
             var counter =0;
             // console.log('check for victory fired');
@@ -99,16 +79,40 @@ slotToBeClicked
                 }
             }
         }
+
+        function checkDiagonal() {
+            var diagonalCounter =0;
+            console.log('checkDiagonal fired');
+            // console.log(diag[0][0]);
+            // console.log(diag[0].length);
+            for (var i=0; i < diag.length; i++) {
+                for (var j=0; j<diag[i].length; j++) {
+                    if(diag[i][j].hasClass(currentPlayer)){
+                        diagonalCounter++;
+                        // console.log(diagonalCounter);
+                    } else {
+                        console.log(false);
+                        diagonalCounter=0;
+                    }
+                    if(diagonalCounter==4) {
+                        console.log('diagonal win!');
+                        victoryBlink(currentPlayer);
+                        setTimeout(victoryFlip, 1000);
+                        setTimeout(victoryBoard,3000);
+                    }
+                }
+            }
+        }
     // end of click event
     });
 
-function victoryBlink(winner) {
-    console.log('The winner is:' + winner);
+function victoryBlink(currentPlayer) {
+    console.log('The winner is:' + currentPlayer);
     console.log(winner);
-    $('.winner').css('transition-duration', '2s');
-    $('.winner').css('animation', 'blinker 1s linear infinite');
-    $('.winner').css('width', '45px');
-    $('.winner').css('height', '45px');
+    $('.' + currentPlayer).css('transition-duration', '2s');
+    $('.' + currentPlayer).css('animation', 'blinker 1s linear infinite');
+    $('.' + currentPlayer).css('width', '45px');
+    $('.' + currentPlayer).css('height', '45px');
 }
 
 function victoryFlip () {
@@ -121,6 +125,8 @@ function victoryBoard() {
     $('#overlay').css('display', 'block');
     $('#congrats').css('display', 'block');
     $('#congrats').css('transition-duration', '1s');
+    $('congrats').css('transition-property', 'display');
+
     if (currentPlayer == 'player1') {
         $('#input-winner').html('Player 2');
         $('#input-winner').css('color', 'red');
@@ -149,39 +155,14 @@ $('#close-manual').on('click', function () {
 });
 
 
-var diagVict = [
-    [0,7,14,21],
-    [1,8,15,22],
-    [2,9,16,23],
-    [3,8,13,18],
-    [4,9,14,19],
-    [5,10,15,20],
-    [6,13,20,27],
-    [7,14,21,28],
-    [8,15,22,29],
-    [9,14,19,24],
-    [10,15,20,25],
-    [11,16,21,26],
-    [12,19,26,33],
-    [13,20,27,34],
-    [14,21,28,35],
-    [15,20,25,30],
-    [16,21,26,31],
-    [17,22,27,32],
-    [18,25,32,39],
-    [19,26,33,40],
-    [20,27,34,41],
-    [21,26,31,36],
-    [22,27,32,37],
-    [23,28,33,38]
-];
 
-var hole = $('.hole');
+
 
 
 (function addClass() {
 
     for (var i=0; i<hole.length; i++) {
         hole.eq(i).addClass(''+i);
+        hole.eq(i).html('<p>'+i+'</p>');
     }
 })();

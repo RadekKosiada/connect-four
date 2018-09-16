@@ -20,16 +20,19 @@ body {
     left: 0;
     z-index: 1;
     opacity: 0.95;
+    transition-duration: 1;
+    transition-property: display;
 }
+
 #title{
     color: blue;
-    text-shadow: 3px 3px red;
-    font-size: 2.5em;
+    text-shadow: 2px 2px red;
+    font-size: 2em;
     text-transform: uppercase;
     display: inline-block;
     position: fixed;
-    top: 55px;
-    left: -100px;
+    top: 45px;
+    left: -70px;
     transform: rotate(0.85turn);
 }
 
@@ -40,7 +43,14 @@ body {
     text-align: center;
 }
 
-#header {
+#version {
+    text-transform: none;
+    font-size: 0.5em;
+    text-align: center;
+    text-shadow: 1px 1px red;
+}
+
+#info-bar {
     position: fixed;
     display: inline;
     left: 50%;
@@ -66,6 +76,9 @@ body {
     text-shadow: 1px 1px grey;
 }
 
+#instructions, #reset {
+    display: inline-block;
+}
 #instructions {
     margin-top: 7px;
     color: grey;
@@ -75,9 +88,20 @@ body {
 
 #instructions:hover {
     color: black;
-
 }
 
+#reset {
+    margin-top: 7px;
+    color: grey;
+    opacity: 0.5;
+    cursor: pointer;
+    text-shadow: 1px 1px rgb(0, 0, 255, 0.75);
+}
+
+#reset:hover {
+    color: darkgrey;
+    opacity: 0.95;
+}
 
 .manual {
     margin-left: 50px;
@@ -95,7 +119,13 @@ body {
     padding: 15px;
     box-shadow: 7px 7px grey;
 }
+    #title-manual{
+        color: blue;
+        text-transform: uppercase;
+        text-shadow: 0.75px 0.75px red;
+        font-weight: bold;
 
+    }
 #congrats {
     margin-left: 50px;
     display: none;
