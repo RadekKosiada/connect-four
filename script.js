@@ -143,6 +143,10 @@ $('#restart').on('click', function () {
     location.reload();
 });
 
+$('#reset').on('click', function () {
+    location.reload();
+});
+
 
 $('#instructions').on('click', function () {
     $('#overlay').css('display', 'block');
@@ -163,6 +167,6 @@ $('#close-manual').on('click', function () {
 
     for (var i=0; i<hole.length; i++) {
         hole.eq(i).addClass(''+i);
-    
+
     }
 })();
